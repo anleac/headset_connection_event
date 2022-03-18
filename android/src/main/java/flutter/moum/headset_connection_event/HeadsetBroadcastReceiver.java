@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.util.Log;
 import android.view.KeyEvent;
 
@@ -49,6 +50,9 @@ public class HeadsetBroadcastReceiver extends BroadcastReceiver {
                     headsetEventListener.onHeadsetDisconnect();
                 }
                 break;
+            }
+            case AudioManager.ACTION_AUDIO_BECOMING_NOISY: {
+                headsetEventListener.onHeadsetDisconnect();
             }
             default:
                 abortBroadcast();
